@@ -58,6 +58,7 @@ func (s *APIServer) handleLogin(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	token, err := createJWT(acc)
+
 	if err != nil {
 		return err
 	}
@@ -66,6 +67,8 @@ func (s *APIServer) handleLogin(w http.ResponseWriter, r *http.Request) error {
 		Token:  token,
 		Number: acc.Number,
 	}
+
+	fmt.Println("JWT Token: ", token)
 
 	return WriteJSON(w, http.StatusOK, resp)
 }
