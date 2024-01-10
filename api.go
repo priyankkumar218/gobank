@@ -146,6 +146,11 @@ func (s *APIServer) handleDeleteAccount(w http.ResponseWriter, r *http.Request) 
 }
 
 func (s *APIServer) handleTransfer(w http.ResponseWriter, r *http.Request) error {
+
+	if r.Method != "PATCH" {
+		return fmt.Errorf("method not allowed %s", r.Method)
+	}
+
 	transferReq := &TransferRequest{}
 
 	if err := json.NewDecoder(r.Body).Decode(transferReq); err != nil {
