@@ -146,11 +146,17 @@ func (s *APIServer) handleDeleteAccount(w http.ResponseWriter, r *http.Request) 
 }
 
 func (s *APIServer) handleTransfer(w http.ResponseWriter, r *http.Request) error {
-	transferReq := new(TransferRequest)
+	transferReq := &TransferRequest{}
+
 	if err := json.NewDecoder(r.Body).Decode(transferReq); err != nil {
 		return err
 	}
+
 	defer r.Body.Close()
+
+	if err := s.store.UpdateAccountBalance(transferReq.Amount, transferReq.ToAccount); err != nil {
+		return err
+	}
 
 	return WriteJSON(w, http.StatusOK, transferReq)
 }

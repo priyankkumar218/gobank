@@ -10,6 +10,7 @@ import (
 type Storage interface {
 	CreateAccount(*Account) error
 	DeleteAccount(int) error
+	UpdateAccountBalance(int, int) error
 	UpdateAccount(*Account) error
 	GetAccounts() ([]*Account, error)
 	GetAccountByID(int) (*Account, error)
@@ -82,6 +83,11 @@ func (s *PostgresStore) UpdateAccount(*Account) error {
 
 func (s *PostgresStore) DeleteAccount(id int) error {
 	_, err := s.db.Query("delete from account where id = $1", id)
+	return err
+}
+
+func (s *PostgresStore) UpdateAccountBalance(balance int, number int) error {
+	_, err := s.db.Query("UPDATE account SET balance = balance + $1 WHERE number = $2", balance, number)
 	return err
 }
 
