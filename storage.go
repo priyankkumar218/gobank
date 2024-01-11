@@ -22,7 +22,7 @@ type PostgresStore struct {
 }
 
 func NewPostgresStore() (*PostgresStore, error) {
-	connStr := "user=postgres dbname=postgres password=root sslmode=disable"
+	connStr := "postgres://root:yS5GW3DpYX3AYgPRqZp7ho06yvU8NrCO@dpg-cmfvm1nqd2ns73a7h5e0-a/instance_postgres"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
