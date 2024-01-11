@@ -3,7 +3,7 @@
 
 `go run .` (windows) or
 
-`go run *.go` (linux/mac)
+`make run` (linux/mac/wsl)
 
 ### To pull and run the postgres docker image
 #### Pull
