@@ -12,5 +12,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.PAT }} # Replace with your Personal Access Token
-          repository: your-username/other-repo # Replace with the other repo's name
+          repository: priyankkumar218/RestAssuredLatestFramework # Replace with the other repo's name
           event-type: trigger-workflow # Custom event type to trigger the workflow
