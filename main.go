@@ -6,6 +6,8 @@ import (
 	"log"
 )
 
+// This is the main.go file
+
 func seedAccount(store Storage, fname, lname, pw string) *Account {
 	acc, err := NewAccount(fname, lname, pw)
 	if err != nil {
