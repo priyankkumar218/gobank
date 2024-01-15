@@ -1,0 +1,16 @@
+name: Trigger Action in Other Repo
+
+on:
+  push:
+    branches: master
+
+jobs:
+  trigger-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow in other repo
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT }} # Replace with your Personal Access Token
+          repository: your-username/other-repo # Replace with the other repo's name
+          event-type: trigger-workflow # Custom event type to trigger the workflow
